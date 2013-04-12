@@ -20,8 +20,8 @@ build() {
 package() {
   install -d -m755 $pkgdir/usr/share/keepass2-bin
   cp -a $srcdir/* $pkgdir/usr/share/keepass2-bin
-  chmod a+x $pkgdir/usr/share/keepass2-bin/KeePass.exe
   install -d -m755 $pkgdir/usr/bin
   cd $pkgdir/usr/bin
-  ln -s ../share/keepass2-bin/KeePass.exe keepass2
+  echo -e "#!/usr/bin/bash\nmono /usr/share/keepass2-bin/KeePass.exe" > $pkgdir/usr/bin/keepass2
+  chmod a+x $pkgdir/usr/bin/keepass2
 }
